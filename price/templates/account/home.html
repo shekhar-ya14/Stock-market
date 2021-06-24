@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Search Stock</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Stock Search</h1>      
+    <form class="form-inline" method="GET">
+    <input type="text" class="form-control" size="50" placeholder="Search Companies" name="stock" id="stock" value={{request.GET.stock}}>
+    <button type="submit" class="btn btn-danger">Search</button>
+  </form>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  
+</nav>
+
+<div class="container">  
+ {% if price_data %}
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Current Price</h3></div>
+        <div class="panel-footer"><h2>{{price_data.curr_p}}</h2></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Today Change</h3></div>
+        <div class="panel-footer"><h2>{{price_data.chng}}</h2></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-danger">
+        <div class="panel-heading"><h3>Today's High</h3></div>
+        <div class="panel-footer"><h2>{{price_data.today_high}}</h2></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-success">
+        <div class="panel-heading"><h3>Todays's Low</h3></div>
+        <div class="panel-footer"><h2>{{price_data.today_low}}</h2></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-success">
+        <div class="panel-heading"><h3>52 Week's High</h3></div>
+        <div class="panel-footer"><h2>{{price_data.52week_high}}</h2></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-success">
+        <div class="panel-heading"><h3>52 Week's Low</h3></div>
+        <div class="panel-footer"><h2>{{price_data.52week_low}}</h2></div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Market Cap</h3></div>
+        <div class="panel-footer"><h2>{{price_data.market_cap}}</h2></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>P/E</h3></div>
+        <div class="panel-footer"><h2>{{price_data.pe}}</h2></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>P/B</h3></div>
+        <div class="panel-footer"><h2>{{price_data.pb}}</h2></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Companie's Debt </h3></div>
+        <div class="panel-footer"><h2>{{price_data.debt}}</h2></div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <h1>search stock </h1>
+  {% endif %}
+</div><br><br>
+
+
+
+</body>
+</html>
